@@ -101,22 +101,23 @@ export default function CustomersManagement({ showToast }: Props) {
   const selectedCustomerDebts = debts.filter(d => d.customerId === selectedCustomerId);
 
   return (
-    <div className="page-content">
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
-        <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>إدارة ملفات العملاء</h1>
+    <div className="page-content" style={{ gap: '1.25rem' }}>
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">إدارة ملفات العملاء</h1>
+          <p className="page-subtitle">إدارة العملاء والأرصدة والديون</p>
+        </div>
         {isAdmin && (
-          <div style={{ display: 'flex', gap: '0.75rem' }}>
-            <button className="btn btn-primary" onClick={() => { setShowAddCustomer(s => !s); }}>
-              <Plus size={16} />إضافة عميل جديد
-            </button>
-          </div>
+          <button className="btn-add" onClick={() => { setShowAddCustomer(s => !s); }}>
+            <Plus size={16} />إضافة عميل
+          </button>
         )}
       </div>
 
       {/* Add Customer Form */}
       {isAdmin && showAddCustomer && (
-        <div className="section-card" style={{ border: '2px solid var(--accent)' }}>
-          <div className="section-card-header"><div className="section-card-title">إضافة عميل جديد</div></div>
+        <div className="section-card premium-card">
+          <div className="section-card-header"><div className="section-card-title"><Plus size={18} color="var(--success)" />إضافة عميل جديد</div></div>
           <div className="section-card-body">
             <div className="form-group-grid">
               <div className="form-group">
@@ -156,14 +157,15 @@ export default function CustomersManagement({ showToast }: Props) {
       )}
 
       {/* Search and List */}
-      <div style={{ position: 'relative', maxWidth: 400, marginBottom: '1.25rem', marginTop: '1.25rem' }}>
-        <Search size={16} style={{ position: 'absolute', right: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--gray)' }} />
-        <input className="form-input" type="text" placeholder="بحث بالاسم أو الهاتف أو الهوية..." value={search} onChange={e => setSearch(e.target.value)} style={{ paddingRight: '2.5rem' }} />
+      <div className="filter-section">
+        <div className="search-box">
+          <input type="text" placeholder="بحث بالاسم أو الهاتف أو الهوية..." value={search} onChange={e => setSearch(e.target.value)} />
+        </div>
       </div>
 
-      <div className="section-card">
+      <div className="section-card premium-card">
         <div className="table-responsive">
-          <table className="financial-table">
+          <table className="premium-table">
             <thead>
               <tr>
                 <th>الاسم</th><th>الهاتف</th><th>النوع</th>
@@ -175,7 +177,7 @@ export default function CustomersManagement({ showToast }: Props) {
             </thead>
             <tbody>
               {filteredCustomers.map(c => (
-                <tr key={c.id} style={{ background: selectedCustomerId === c.id ? 'var(--sidebar-hover)' : 'transparent' }}>
+                <tr key={c.id}>
                   <td style={{ fontWeight: 700 }}>{c.name}</td>
                   <td>{c.phone}</td>
                   <td><span className="badge pending">{c.type === 'individual' ? 'فرد' : 'شركة'}</span></td>

@@ -89,30 +89,36 @@ export default function Vaults({ showToast }: Props) {
   });
 
   return (
-    <div className="page-content">
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>إدارة الخزنات</h1>
+    <div className="page-content" style={{ gap: '1.25rem' }}>
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">إدارة الخزنات</h1>
+          <p className="page-subtitle">مراقبة أرصدة الخزنات والعمليات</p>
+        </div>
         {isAdmin && (
-          <button className="btn btn-primary" onClick={() => setShowAdd(s => !s)}>
+          <button className="btn-add" onClick={() => setShowAdd(s => !s)}>
             <Plus size={16} />{showAdd ? 'إلغاء' : 'إضافة خزنة'}
           </button>
         )}
       </div>
 
-      {/* Totals */}
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      {/* Totals Summary */}
+      <div className="dashboard-kpis-grid">
         {Object.entries(totalByCurrency).map(([cur, total]) => (
-          <div key={cur} style={{ background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 10, padding: '0.75rem 1.25rem', display: 'flex', flexDirection: 'column', gap: '0.25rem', minWidth: 140 }}>
-            <span style={{ fontSize: '0.75rem', color: 'var(--gray)' }}>إجمالي {cur}</span>
-            <span style={{ fontWeight: 800, fontSize: '1.1rem', color: 'var(--primary)' }}>{total.toLocaleString()}</span>
+          <div key={cur} className="kpi-card">
+            <div className="kpi-card-header">
+              <span>إجمالي {cur}</span>
+              <div className="kpi-icon-wrapper blue"><Banknote size={16} /></div>
+            </div>
+            <div className="kpi-value">{total.toLocaleString()}</div>
           </div>
         ))}
       </div>
 
       {/* Add Vault Form */}
       {isAdmin && showAdd && (
-        <div className="section-card" style={{ border: '2px solid var(--accent)' }}>
-          <div className="section-card-header"><div className="section-card-title"><Plus size={18} />إضافة خزنة جديدة</div></div>
+        <div className="section-card premium-card">
+          <div className="section-card-header"><div className="section-card-title"><Plus size={18} color="var(--success)" />إضافة خزنة جديدة</div></div>
           <div className="section-card-body">
             <div className="form-group-grid">
               <div className="form-group">
@@ -141,53 +147,33 @@ export default function Vaults({ showToast }: Props) {
       )}
 
       {/* Vaults Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.25rem' }}>
+      <div className="cards-grid">
         {vaults.map(vault => (
           <div
             key={vault.id}
-            className="section-card"
+            className="card-item"
             style={{
-              cursor: 'pointer',
-              border: selectedVaultId === vault.id ? '2px solid var(--accent)' : '1px solid var(--border)',
               opacity: vault.isActive ? 1 : 0.65,
-              transition: 'var(--transition)'
             }}
             onClick={() => isAdmin && setSelectedVaultId(v => v === vault.id ? null : vault.id)}
           >
-            <div className="section-card-header">
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                <div className="section-card-title"><Banknote size={18} color="var(--accent)" />{vault.name}</div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--gray)', paddingRight: '1.6rem' }}>{vaultTypeLabel[vault.type]} — {vault.branch}</span>
+            <div className="card-header">
+              <div>
+                <div className="card-title"><Banknote size={18} style={{ marginRight: '0.5rem', color: 'var(--accent)' }} />{vault.name}</div>
+                <span className="card-subtitle">{vaultTypeLabel[vault.type]} — {vault.branch}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span className={`badge ${vault.isActive ? 'active' : 'inactive'}`}>{vault.isActive ? 'نشطة' : 'موقوفة'}</span>
-                {isAdmin && (
-                  <div style={{ display: 'flex', gap: '0.3rem' }} onClick={e => e.stopPropagation()}>
-                    <button className="btn btn-secondary" style={{ padding: '0.22rem 0.5rem', fontSize: '0.72rem' }}
-                      onClick={() => openEditVault(vault)}><Edit3 size={12} /></button>
-                    <button className="btn btn-secondary" style={{ padding: '0.22rem 0.5rem', fontSize: '0.72rem', color: vault.isActive ? 'var(--warning)' : 'var(--success)' }}
-                      onClick={() => {
-                        if (vault.isActive) {
-                          setConfirmVaultId(vault.id);
-                          setConfirmVaultName(vault.name);
-                          setShowConfirm(true);
-                        } else {
-                          disableVault(vault.id);
-                          showToast('success', `تم إعادة تفعيل نشاط الخزنة "${vault.name}"`);
-                        }
-                      }}>
-                      <ToggleLeft size={12} />
-                    </button>
-                  </div>
-                )}
-              </div>
+              <span className={`card-badge ${vault.isActive ? 'active' : 'inactive'}`}>{vault.isActive ? 'نشطة' : 'موقوفة'}</span>
             </div>
-            <div className="section-card-body">
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                {Object.entries(vault.balances).map(([cur, bal]) => (
-                  <div key={cur} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--gray)', fontWeight: 600 }}>{cur}</span>
-                    <span style={{ fontWeight: 800, fontSize: '1rem', color: (bal as number) < 0 ? 'var(--danger)' : 'var(--primary)' }}>
+            <div className="card-content" style={{ marginTop: '1rem' }}>
+              {Object.entries(vault.balances).map(([cur, bal]) => (
+                <div key={cur} className="card-row">
+                  <span className="card-label">{cur}</span>
+                  <span className="card-value" style={{ color: (bal as number) < 0 ? 'var(--danger)' : 'var(--primary)' }}>
+                    {(bal as number).toLocaleString()}
+                  </span>
+                </div>
+              ))}
+            </div>
                       {(bal as number).toLocaleString('ar-LY', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </span>
                   </div>

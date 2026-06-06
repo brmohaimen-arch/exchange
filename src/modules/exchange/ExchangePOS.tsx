@@ -108,19 +108,44 @@ export default function ExchangePOS({ showToast: _showToast }: Props) {
   };
 
   return (
-    <div className="page-content">
-      <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>عملية صرافة جديدة</h1>
+    <div className="page-content" style={{ gap: '1.25rem' }}>
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">عملية صرافة جديدة</h1>
+          <p className="page-subtitle">الخطوة {step} من 4 - {tabLabel[opType]}</p>
+        </div>
+      </div>
 
       <div className="pos-container">
         {/* Left: Wizard Form */}
         <div className="pos-panel">
-          <div className="section-card">
+          <div className="section-card premium-card">
             <div className="section-card-header">
-              <div className="section-card-title">الخطوة {step} من 4</div>
+              <div className="section-card-title">
+                {step === 1 && '1. نوع العملية'}
+                {step === 2 && '2. الخزنة والعميل'}
+                {step === 3 && '3. المبلغ والسعر'}
+                {step === 4 && '4. المراجعة والتأكيد'}
+                {step === 5 && '✓ اكتملت العملية'}
+              </div>
+              <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <div key={i} style={{
+                    width: '8px', height: '8px', borderRadius: '50%',
+                    background: i + 1 <= step ? 'var(--success)' : 'var(--border)',
+                    transition: 'all 0.3s ease'
+                  }} />
+                ))}
+              </div>
             </div>
             <div className="section-card-body">
               {validationError && (
-                <div className="validation-warning" style={{ marginBottom: '1rem' }}><AlertTriangle size={16} />{validationError}</div>
+                <div style={{
+                  marginBottom: '1rem', padding: '0.75rem 1rem', borderRadius: '8px',
+                  background: 'linear-gradient(135deg, #FEF2F2 0%, #FFF5F5 100%)',
+                  border: '1px solid #FCA5A5', display: 'flex', alignItems: 'center', gap: '0.5rem',
+                  color: '#B91C1C', fontSize: '0.85rem', fontWeight: '600'
+                }}><AlertTriangle size={16} />{validationError}</div>
               )}
 
               {step === 1 && (
