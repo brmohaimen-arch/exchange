@@ -89,9 +89,6 @@ export default function FixedAssetsDashboard({ showToast: _showToast }: Props) {
           <p className="page-subtitle">إحصائيات الأصول والصيانة والإهلاك</p>
         </div>
       </div>
-          </p>
-        </div>
-      </div>
 
       {/* KPI Cards Grid */}
       <div className="dashboard-kpis-grid">

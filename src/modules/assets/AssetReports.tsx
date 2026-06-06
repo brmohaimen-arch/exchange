@@ -84,8 +84,6 @@ export default function AssetReports({ showToast }: Props) {
           <h1 className="page-title">تقرير جرد الأصول</h1>
           <p className="page-subtitle">قائمة شاملة بجميع الأصول والتكاليف</p>
         </div>
-      </div>
-        </div>
         <div style={{ display: 'flex', gap: '0.6rem' }}>
           <button className="btn btn-secondary" onClick={handlePrint}>
             <Printer size={15} /> طباعة

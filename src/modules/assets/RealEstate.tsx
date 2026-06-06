@@ -76,7 +76,6 @@ export default function RealEstatePage({ showToast: _showToast }: Props) {
           <p className="page-subtitle">متابعة العقارات والملكيات وعقود الإيجار</p>
         </div>
       </div>
-      </div>
 
       {/* Alerts Panel */}
       {alerts.length > 0 && (

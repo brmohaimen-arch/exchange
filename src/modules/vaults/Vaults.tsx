@@ -174,12 +174,25 @@ export default function Vaults({ showToast }: Props) {
                 </div>
               ))}
             </div>
-                      {(bal as number).toLocaleString('ar-LY', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                    </span>
-                  </div>
-                ))}
+            {isAdmin && (
+              <div style={{ display: 'flex', gap: '0.5rem' }} onClick={e => e.stopPropagation()}>
+                <button className="btn btn-secondary" style={{ padding: '0.22rem 0.5rem', fontSize: '0.72rem' }}
+                  onClick={() => openEditVault(vault)}><Edit3 size={12} /></button>
+                <button className="btn btn-secondary" style={{ padding: '0.22rem 0.5rem', fontSize: '0.72rem', color: vault.isActive ? 'var(--warning)' : 'var(--success)' }}
+                  onClick={() => {
+                    if (vault.isActive) {
+                      setConfirmVaultId(vault.id);
+                      setConfirmVaultName(vault.name);
+                      setShowConfirm(true);
+                    } else {
+                      disableVault(vault.id);
+                      showToast('success', `تم إعادة تفعيل نشاط الخزنة "${vault.name}"`);
+                    }
+                  }}>
+                  <ToggleLeft size={12} />
+                </button>
               </div>
-            </div>
+            )}
           </div>
         ))}
       </div>
@@ -302,7 +315,7 @@ export default function Vaults({ showToast }: Props) {
       <ConfirmModal
         isOpen={showConfirm}
         title="تعطيل الخزنة المالية"
-        message={`هل أنت متأكد من رغبتك في تعطيل الخزنة "${confirmVaultName}"؟ سيؤدي ذلك لإيقاف جميع عمليات الصرف والتحويل المعلقة عليها مؤقتاً.`}
+        message={`هل أنت متأكد من رغبتك في تعطيل الخزنة "${confirmVaultName}"؟ سيؤدي ذلك ��إيقاف جميع عمليات الصرف والتحويل المعلقة عليها مؤقتاً.`}
         confirmLabel="تأكيد التعطيل"
         cancelLabel="إلغاء"
         danger

@@ -88,7 +88,6 @@ export default function Vehicles({ showToast: _showToast }: Props) {
           <p className="page-subtitle">متابعة السيارات والتراخيص والتأمين</p>
         </div>
       </div>
-      </div>
 
       {/* Alerts Panel */}
       {alerts.length > 0 && (

@@ -117,7 +117,6 @@ export default function AssetDocuments({ showToast }: Props) {
           <h1 className="page-title">مستندات الأصول</h1>
           <p className="page-subtitle">إدارة وثائق التأمين والرخص والعقود</p>
         </div>
-      </div>
         {isAdmin && (
           <button
             className="btn btn-primary"
