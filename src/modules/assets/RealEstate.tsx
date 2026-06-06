@@ -68,15 +68,14 @@ export default function RealEstatePage({ showToast: _showToast }: Props) {
   }, [realEstates, fixedAssets, maintenanceRecords, currentDate]);
 
   return (
-    <div className="page-content">
+    <div className="page-content" style={{ gap: '1.25rem' }}>
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+      <div className="page-header">
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>سجل المباني والعقارات والملكيات</h1>
-          <p style={{ color: 'var(--gray)', fontSize: '0.875rem' }}>
-            متابعة العقارات المملوكة، المكاتب المستأجرة، عقود الإيجار، وصكوك الملكية للشركة
-          </p>
+          <h1 className="page-title">سجل المباني والعقارات</h1>
+          <p className="page-subtitle">متابعة العقارات والملكيات وعقود الإيجار</p>
         </div>
+      </div>
       </div>
 
       {/* Alerts Panel */}

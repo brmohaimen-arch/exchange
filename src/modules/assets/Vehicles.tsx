@@ -80,15 +80,14 @@ export default function Vehicles({ showToast: _showToast }: Props) {
   }, [vehicles, fixedAssets, maintenanceRecords, currentDate]);
 
   return (
-    <div className="page-content">
+    <div className="page-content" style={{ gap: '1.25rem' }}>
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+      <div className="page-header">
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>أسطول سيارات الشركة</h1>
-          <p style={{ color: 'var(--gray)', fontSize: '0.875rem' }}>
-            متابعة السيارات، التراخيص، التأمين، وسائقي الحركة في فروع الشركة
-          </p>
+          <h1 className="page-title">أسطول سيارات الشركة</h1>
+          <p className="page-subtitle">متابعة السيارات والتراخيص والتأمين</p>
         </div>
+      </div>
       </div>
 
       {/* Alerts Panel */}

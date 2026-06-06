@@ -36,11 +36,16 @@ export default function CustomerTransactions({ showToast }: Props) {
   };
 
   return (
-    <div className="page-content">
-      <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>إيداع وسحب العملاء</h1>
+    <div className="page-content" style={{ gap: '1.25rem' }}>
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">إيداع وسحب العملاء</h1>
+          <p className="page-subtitle">تنفيذ عمليات الإيداع والسحب</p>
+        </div>
+      </div>
       <div className="pos-container">
         <div className="pos-panel">
-          <div className="section-card">
+          <div className="section-card premium-card">
             <div className="section-card-header"><div className="section-card-title">تنفيذ عملية</div></div>
             <div className="section-card-body">
               <div className="pos-tabs-row" style={{ marginBottom: '1.5rem' }}>

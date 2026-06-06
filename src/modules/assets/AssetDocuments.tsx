@@ -110,15 +110,14 @@ export default function AssetDocuments({ showToast }: Props) {
   };
 
   return (
-    <div className="page-content">
+    <div className="page-content" style={{ gap: '1.25rem' }}>
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+      <div className="page-header">
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>مستندات الأصول</h1>
-          <p style={{ color: 'var(--gray)', fontSize: '0.875rem' }}>
-            إدارة وثائق التأمين والرخص وعقود الملكية والإيجار لجميع الأصول الثابتة
-          </p>
+          <h1 className="page-title">مستندات الأصول</h1>
+          <p className="page-subtitle">إدارة وثائق التأمين والرخص والعقود</p>
         </div>
+      </div>
         {isAdmin && (
           <button
             className="btn btn-primary"
@@ -389,7 +388,7 @@ export default function AssetDocuments({ showToast }: Props) {
                   </select>
                 </div>
                 <div className="form-group" style={{ gridColumn: 'span 2' }}>
-                  <label className="form-label">اسم الملف</label>
+                  <label className="form-label">اسم المل��</label>
                   <input
                     className="form-input"
                     type="text"

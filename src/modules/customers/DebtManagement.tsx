@@ -135,23 +135,18 @@ export default function DebtManagement({ showToast }: Props) {
   const totalRemaining = filteredDebts.reduce((sum, d) => sum + d.remainingAmount, 0);
 
   return (
-    <div className="page-content">
+    <div className="page-content" style={{ gap: '1.25rem' }}>
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.5rem' }}>
+      <div className="page-header">
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <CreditCard size={28} color="var(--accent)" />
-            إدارة الديون والأقساط
-          </h1>
-          <p style={{ color: 'var(--gray)', fontSize: '0.88rem', marginTop: '0.25rem' }}>
-            متابعة ديون العملاء وجدولة الأقساط وتسجيل المدفوعات اليومية والشهرية.
-          </p>
+          <h1 className="page-title">إدارة الديون والأقساط</h1>
+          <p className="page-subtitle">متابعة ديون العملاء وجدولة الأقساط والمدفوعات</p>
         </div>
         
         <div style={{ display: 'flex', gap: '0.75rem' }}>
           {tab === 'list' ? (
-            <button className="btn btn-primary" onClick={() => setTab('add')}>
-              <Plus size={16} /> تسجيل دين جديد
+            <button className="btn-add" onClick={() => setTab('add')}>
+              <Plus size={16} />تسجيل دين
             </button>
           ) : (
             <button className="btn btn-secondary" onClick={() => setTab('list')}>

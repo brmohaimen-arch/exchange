@@ -77,15 +77,14 @@ export default function AssetReports({ showToast }: Props) {
   const handleExport = () => showToast('info', 'جارٍ تصدير التقرير بصيغة Excel...');
 
   return (
-    <div className="page-content">
+    <div className="page-content" style={{ gap: '1.25rem' }}>
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+      <div className="page-header">
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>تقرير جرد الأصول</h1>
-          <p style={{ color: 'var(--gray)', fontSize: '0.875rem' }}>
-            <Package size={14} style={{ verticalAlign: 'middle', marginLeft: '0.3rem' }} />
-            قائمة شاملة بجميع الأصول مع تفاصيل التكلفة والموقع والحالة
-          </p>
+          <h1 className="page-title">تقرير جرد الأصول</h1>
+          <p className="page-subtitle">قائمة شاملة بجميع الأصول والتكاليف</p>
+        </div>
+      </div>
         </div>
         <div style={{ display: 'flex', gap: '0.6rem' }}>
           <button className="btn btn-secondary" onClick={handlePrint}>

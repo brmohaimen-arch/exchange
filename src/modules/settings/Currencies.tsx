@@ -97,18 +97,21 @@ export default function Currencies({ showToast }: Props) {
   };
 
   return (
-    <div className="page-content">
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
-        <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>العملات وأسعار الصرف</h1>
+    <div className="page-content" style={{ gap: '1.25rem' }}>
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">العملات وأسعار الصرف</h1>
+          <p className="page-subtitle">إدارة العملات وتحديث أسعار الصرف</p>
+        </div>
         <div style={{ display: 'flex', gap: '0.75rem' }}>
           {isAdmin && tab === 'rates' && (
-            <button className="btn btn-primary" onClick={() => setShowAddRate(s => !s)}>
-              <Plus size={16} />{showAddRate ? 'إلغاء' : 'إضافة سعر صرف'}
+            <button className="btn-add" onClick={() => setShowAddRate(s => !s)}>
+              <Plus size={16} />{showAddRate ? 'إلغاء' : 'إضافة سعر'}
             </button>
           )}
           {isAdmin && tab === 'currencies' && (
-            <button className="btn btn-primary" onClick={openAddCurrency}>
-              <Plus size={16} />إضافة عملة جديدة
+            <button className="btn-add" onClick={openAddCurrency}>
+              <Plus size={16} />إضافة عملة
             </button>
           )}
         </div>

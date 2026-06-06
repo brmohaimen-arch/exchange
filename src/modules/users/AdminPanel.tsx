@@ -209,8 +209,14 @@ export default function AdminPanel({ showToast, mode }: Props) {
   };
 
   return (
-    <div className="page-content">
-      <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>الإدارة والصلاحيات</h1>
+    <div className="page-content" style={ gap: '1.25rem' }>
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">لوحة مراقبة مدير النظام</h1>
+          <p className="page-subtitle">إدارة المستخدمين والأدوار</p>
+        </div>
+      </div>
+      << style={{ fontSize: '1.5rem', fontWeight: 800 }}>الإدارة والصلاحيات</h1>
 
       {/* Role notice for non-admin */}
       {!isAdmin && (

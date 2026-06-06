@@ -53,8 +53,13 @@ export default function Transfers({ showToast }: Props) {
   };
 
   return (
-    <div className="page-content">
-      <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>التحويلات بين الخزنات والبنوك</h1>
+    <div className="page-content" style={{ gap: '1.25rem' }}>
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">التحويلات بين الخزنات والبنوك</h1>
+          <p className="page-subtitle">طلبات تحويل الأموال تحتاج موافقة من الإدارة</p>
+        </div>
+      </div>
 
       <div className="pos-container">
         {/* Form */}

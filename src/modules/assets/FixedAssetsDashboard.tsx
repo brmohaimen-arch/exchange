@@ -81,15 +81,14 @@ export default function FixedAssetsDashboard({ showToast: _showToast }: Props) {
   }, [fixedAssets]);
 
   return (
-    <div className="page-content">
+    <div className="page-content" style={{ gap: '1.25rem' }}>
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+      <div className="page-header">
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--primary)', marginBottom: '0.25rem' }}>
-            لوحة الأصول الثابتة
-          </h1>
-          <p style={{ color: 'var(--gray)', fontSize: '0.875rem' }}>
-            إحصائيات الأصول، الصيانة، والإهلاك للشركة
+          <h1 className="page-title">لوحة الأصول الثابتة</h1>
+          <p className="page-subtitle">إحصائيات الأصول والصيانة والإهلاك</p>
+        </div>
+      </div>
           </p>
         </div>
       </div>

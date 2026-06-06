@@ -93,14 +93,17 @@ export default function BanksManagement({ showToast }: Props) {
   });
 
   return (
-    <div className="page-content">
+    <div className="page-content" style={{ gap: '1.25rem' }}>
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
-        <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>البنوك والحسابات البنكية</h1>
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">البنوك والحسابات البنكية</h1>
+          <p className="page-subtitle">إدارة البنوك والحسابات</p>
+        </div>
         {isAdmin && (
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-            <button className="btn btn-primary" onClick={openAddBank}><Plus size={16} />إضافة مصرف</button>
-            <button className="btn btn-secondary" onClick={() => openAddAccount()}><Plus size={16} />إضافة حساب</button>
+            <button className="btn-add" onClick={openAddBank}><Plus size={16} />مصرف</button>
+            <button className="btn-add" onClick={() => openAddAccount()}><Plus size={16} />حساب</button>
           </div>
         )}
       </div>
@@ -116,7 +119,7 @@ export default function BanksManagement({ showToast }: Props) {
                 <div style={{ fontWeight: 800, fontSize: '1rem' }}>{bank.name}</div>
                 <div style={{ fontSize: '0.78rem', color: 'var(--gray)', marginTop: '0.15rem' }}>
                   {bank.code} — {bank.city} — {accounts.length} حساب
-                  <span className={`badge ${bank.isActive ? 'active' : 'inactive'}`} style={{ marginRight: '0.5rem', fontSize: '0.68rem' }}>{bank.isActive ? 'نشط' : 'موقوف'}</span>
+                  <span className={`badge ${bank.isActive ? 'active' : 'inactive'}`} style={{ marginRight: '0.5rem', fontSize: '0.68rem' }}>{bank.isActive ? 'ن��ط' : 'موقوف'}</span>
                 </div>
               </div>
             </div>

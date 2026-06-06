@@ -113,8 +113,14 @@ export default function SellCurrency({ showToast: _showToast }: Props) {
   const recentSells = transactions.filter(t => t.type === 'sell').slice(0, 12);
 
   return (
-    <div className="page-content">
+    <div className="page-content" style={{ gap: '1.25rem' }}>
       {/* Header */}
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">بيع عملات</h1>
+          <p className="page-subtitle">عملية بيع العملات الأجنبية</p>
+        </div>
+      </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
         <div style={{
           width: 48, height: 48, borderRadius: 12,

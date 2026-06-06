@@ -322,24 +322,22 @@ export default function Assets({ showToast }: Props) {
   };
 
   return (
-    <div className="page-content">
+    <div className="page-content" style={{ gap: '1.25rem' }}>
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+      <div className="page-header">
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>إدارة الأصول الثابتة</h1>
-          <p style={{ color: 'var(--gray)', fontSize: '0.875rem' }}>
-            قائمة بجميع الأصول الثابتة ومعدات الشركة وإجراء العمليات عليها
-          </p>
+          <h1 className="page-title">إدارة الأصول الثابتة</h1>
+          <p className="page-subtitle">تتبع ممتلكات الشركة والأصول</p>
         </div>
         {isAdmin && (
-          <button className="btn btn-primary" onClick={openAddAsset}>
-            <Plus size={16} /> إضافة أصل جديد
+          <button className="btn-add" onClick={openAddAsset}>
+            <Plus size={16} />إضافة أصل
           </button>
         )}
       </div>
 
       {/* Filters Box */}
-      <div className="section-card">
+      <div className="section-card premium-card">
         <div className="section-card-body">
           <div className="form-group-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))' }}>
             <div className="form-group">

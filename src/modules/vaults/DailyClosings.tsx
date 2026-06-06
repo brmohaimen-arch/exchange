@@ -77,8 +77,14 @@ export default function DailyClosings({ showToast }: Props) {
   const invVault = vaults.find(v => v.id === invVaultId);
 
   return (
-    <div className="page-content">
-      <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>صناديق الصرافين والإقفال اليومي</h1>
+    <div className="page-content" style={ gap: '1.25rem' }>
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">إقفال وفتح الصناديق اليومية</h1>
+          <p className="page-subtitle">إدارة فتح وإقفال صناديق الصرف</p>
+        </div>
+      </div>
+      << style={{ fontSize: '1.5rem', fontWeight: 800 }}>صناديق الصرافين والإقفال اليومي</h1>
 
       <div className="pos-tabs-row" style={{ maxWidth: 400 }}>
         <button className={`pos-tab-btn${tab === 'shifts' ? ' active' : ''}`} onClick={() => setTab('shifts')}>

@@ -131,8 +131,14 @@ export default function ReportsSection({ showToast }: Props) {
   };
 
   return (
-    <div className="page-content">
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+    <div className="page-content" style={ gap: '1.25rem' }>
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">التقارير والإحصائيات</h1>
+          <p className="page-subtitle">عرض التقارير المالية المفصلة</p>
+        </div>
+      </div>
+      << style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
         <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>التقارير والإحصائيات</h1>
         <div style={{ display: 'flex', gap: '0.5rem' }}>
           <button className="btn btn-secondary" onClick={() => handleExport('excel')} style={{ fontSize: '0.85rem' }}>
